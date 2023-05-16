@@ -19,6 +19,7 @@ sudo chroot $DIST /bin/bash -c "update-locale LANGUAGE=en_US.UTF-8 LC_ALL=C"
 sudo chroot $DIST /bin/bash -c "echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && locale-gen"
 sudo chroot $DIST apt install -y podman
 sudo chroot $DIST apt install -y distrobox 
+sudo chroot $DIST apt install -y ca-certificates
 sudo cp $BUILDDIR/files/sources.list $TMPDIR/$DIST/etc/apt/sources.list
 sudo cp $BUILDDIR/files/wsl.conf $TMPDIR/$DIST/etc/wsl.conf
 sudo curl -L https://raw.githubusercontent.com/PistachioLinux/pistachio-scripts/master/pistachio-manager -o $TMPDIR/$DIST/usr/bin/pistachio-manager
