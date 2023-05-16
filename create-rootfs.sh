@@ -13,6 +13,9 @@ DIST="testing"
 
 cd $TMPDIR
 
+# start timer
+start=$SECONDS
+
 sudo debootstrap --arch "amd64" --exclude=debfoster --include sudo,locales,curl $DIST $DIST http://deb.debian.org/debian
 sudo chroot $DIST apt-get clean
 sudo chroot $DIST /bin/bash -c "update-locale LANGUAGE=en_US.UTF-8 LC_ALL=C"
@@ -23,6 +26,7 @@ sudo chroot $DIST apt install -y ca-certificates
 sudo cp $BUILDDIR/files/sources.list $TMPDIR/$DIST/etc/apt/sources.list
 sudo cp $BUILDDIR/files/wsl.conf $TMPDIR/$DIST/etc/wsl.conf
 sudo cp $BUILDDIR/files/containers.conf $TMPDIR/$DIST/etc/containers/containers.conf
+sudo cp $BUILDDIR/files/motd $TMPDIR/$DIST/etc/motd
 sudo curl -L https://raw.githubusercontent.com/PistachioLinux/pistachio-scripts/master/pistachio-manager -o $TMPDIR/$DIST/usr/bin/pistachio-manager
 sudo curl -L https://raw.githubusercontent.com/PistachioLinux/pistachio-scripts/master/pistachio-update -o $TMPDIR/$DIST/usr/bin/pistachio-update
 sudo chmod +x $TMPDIR/$DIST/usr/bin/pistachio-manager
@@ -34,3 +38,7 @@ sudo tar --ignore-failed-read -czvf $TMPDIR/pistachio-$(date +%Y%m%d).tar.gz *
 mkdir -p $BUILDDIR/build
 mv -f $TMPDIR/pistachio-$(date +%Y%m%d).tar.gz $BUILDDIR/build
 cd $BUILDDIR
+
+duration=$(( SECONDS - start ))
+
+echo "Finished in $duration seconds."

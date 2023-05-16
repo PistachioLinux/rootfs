@@ -120,3 +120,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Read Message of the Day (Pistachio Linux added)
+cat /etc/motd
