@@ -21,6 +21,9 @@ sudo chroot $DIST apt install -y podman
 sudo chroot $DIST apt install -y distrobox 
 sudo cp $BUILDDIR/files/sources.list $TMPDIR/$DIST/etc/apt/sources.list
 sudo cp $BUILDDIR/files/wsl.conf $TMPDIR/$DIST/etc/wsl.conf
+sudo curl -L https://raw.githubusercontent.com/PistachioLinux/pistachio-manager/master/pistachio-manager -o $TMPDIR/$DIST/usr/bin/pistachio-manager
+sudo chmod +x $TMPDIR/$DIST/usr/local/bin/pistachio-manager
+sudo cp $BUILDDIR/files/.bashrc $TMPDIR/$DIST/etc/skel/.bashrc
 cd $DIST
 sudo tar --ignore-failed-read -czvf $TMPDIR/pistachio-$(date +%Y%m%d).tar.gz *
 
