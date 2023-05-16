@@ -1,0 +1,28 @@
+name: Build rootfs Artifact
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+        
+        - name: "Get current date"
+          id: date
+          run: echo "::set-output name=date::$(date +'%Y%m%d')"
+
+        - name: "Add debootstrap"
+          run: sudo apt-get install debootstrap
+        
+        - name: "Run rootfs script"
+          run: ./create-rootfs.sh
+
+        - name: "Create artifact"
+          uses: actions/upload-artifact@v2
+          with:
+            name: pistachio-artifact-${{ steps.date.outputs.date }}
+            path: build/*
