@@ -1,3 +1,7 @@
-Pistachio Linux (beta)
+#!/bin/bash
 
-Welcome to Pistachio Linux! This is a beta release, so expect bugs and other issues. If you find any, please report them on GitHub at https://github.com/PistachioLinux/PistachioLinux. For more info, please check the website at https://linux.pistasjis.net. Thanks, and have fun! :)
+echo "Pistachio Linux (beta)"
+
+echo "Welcome to Pistachio Linux! This is a beta release, so expect bugs and other issues. If you find any, please report them on GitHub at https://github.com/PistachioLinux/PistachioLinux. For more info, please check the website at https://linux.pistasjis.net. Thanks, and have fun! :)"
+
+curl -s https://pistachioannouncements.pistasjis.net 

@@ -122,4 +122,6 @@ if ! shopt -oq posix; then
 fi
 
 # Read Message of the Day (Pistachio Linux added)
-cat /etc/motd
+if [ -r /etc/motd ]; then
+    . /etc/motd
+fi

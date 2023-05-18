@@ -27,6 +27,7 @@ sudo cp $BUILDDIR/files/sources.list $TMPDIR/$DIST/etc/apt/sources.list
 sudo cp $BUILDDIR/files/wsl.conf $TMPDIR/$DIST/etc/wsl.conf
 sudo cp $BUILDDIR/files/containers.conf $TMPDIR/$DIST/etc/containers/containers.conf
 sudo cp $BUILDDIR/files/motd $TMPDIR/$DIST/etc/motd
+sudo chmod +x $TMPDIR/$DIST/etc/motd
 sudo curl -L https://raw.githubusercontent.com/PistachioLinux/pistachio-scripts/master/pistachio-manager -o $TMPDIR/$DIST/usr/bin/pistachio-manager
 sudo curl -L https://raw.githubusercontent.com/PistachioLinux/pistachio-scripts/master/pistachio-update -o $TMPDIR/$DIST/usr/bin/pistachio-update
 sudo chmod +x $TMPDIR/$DIST/usr/bin/pistachio-manager
